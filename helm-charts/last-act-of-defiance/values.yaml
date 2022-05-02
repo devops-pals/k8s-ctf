@@ -1,0 +1,5 @@
+category: "web"
+challengeName: "last-act-of-defiance"
+challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/last-act-of-defiance"
+externalPort: 80
+containerPort: 80
