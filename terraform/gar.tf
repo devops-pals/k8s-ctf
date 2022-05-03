@@ -1,6 +1,8 @@
 resource "google_artifact_registry_repository" "docker_artifact_registry" {
   provider = google-beta
 
+  count = var.infra_enabled ? 1:0
+
   location = "us-central1"
   repository_id = "docker-repo"
   description = "Repository for storing docker images"
@@ -15,6 +17,8 @@ resource "google_project_service" "artifactregistry_googleapis_com" {
 
 resource "google_artifact_registry_repository" "helm_artifact_registry" {
   provider = google-beta
+
+  count = var.infra_enabled ? 1:0
 
   location = "us-central1"
   repository_id = "helm-repo"
