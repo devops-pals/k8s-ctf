@@ -17,7 +17,7 @@ resource "google_artifact_registry_repository" "helm_artifact_registry" {
   provider = google-beta
 
   location = "us-central1"
-  repository_id = "docker-repo"
+  repository_id = "helm-repo"
   description = "Repository for storing helm charts"
   format = "HELM"
   depends_on = [google_project_service.artifactregistry_googleapis_com]
