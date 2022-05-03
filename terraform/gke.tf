@@ -1,5 +1,5 @@
 resource "google_container_cluster" "primary" {
-  count = var.infra_enabled ? 1:0
+  count = var.gke_enabled ? 1:0
 
   name     = "k8s-ctf-cluster"
   location = "us-central1-a"
@@ -12,7 +12,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
-  count = var.infra_enabled ? 1:0
+  count = var.gke_enabled ? 1:0
 
   name       = "k8s-ctf-node-pool"
   location   = "us-central1-a"
