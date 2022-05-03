@@ -10,12 +10,12 @@ terraform {
 
 provider "google" {
   project = "k8s-ctf-345001"
-  region = "us-central1"
-  zone = "us-central1-a"
+  region  = "us-central1"
+  zone    = "us-central1-a"
 }
 
 provider "google-beta" {
   project = "k8s-ctf-345001"
-  region = "us-central1"
-  zone = "us-central1-a"
+  region  = "us-central1"
+  zone    = "us-central1-a"
 }
