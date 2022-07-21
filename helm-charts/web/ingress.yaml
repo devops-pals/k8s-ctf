@@ -2,35 +2,38 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-challenges-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "ingress-webchalls"
 spec:
   rules:
-  - host: foo.bar.com
+  - host: web1.scriptkitties.dev
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: service1
+            name: blame-the-intern
             port:
               number: 80
-  - host: bar.foo.com
+  - host: web2.scriptkitties.dev
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: service2
+            name: last-act-of-defiance
             port:
               number: 80
-  - host: bar.foo.com
+  - host: web3.scriptkitties.dev
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: service2
+            name: old-family-recipe
             port:
               number: 80

@@ -7,6 +7,7 @@ metadata:
 spec:
   selector:
     app: {{ .Values.challengeName }}
+  type: NodePort
   ports:
     - port: {{ .Values.externalPort }}
       targetPort: {{ .Values.containerPort }}
