@@ -23,6 +23,7 @@ resource "digitalocean_record" "web3" {
   value  = google_compute_address.ingress_webchalls.address
 }
 
-resource "google_compute_address" "ingress_webchalls" {
+resource "google_compute_global_address" "ingress_webchalls" {
   name = "ingress-webchalls"
+  address_type = "EXTERNAL"
 }
