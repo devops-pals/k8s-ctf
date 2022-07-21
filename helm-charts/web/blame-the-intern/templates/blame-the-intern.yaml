@@ -5,7 +5,6 @@ metadata:
   labels:
     category: {{ .Values.category }}
 spec:
-  type: LoadBalancer
   selector:
     app: {{ .Values.challengeName }}
   ports:
