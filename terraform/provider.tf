@@ -1,11 +1,21 @@
 terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "~> 2.0"
+    }
+  }
   cloud {
     organization = "devops-pals"
 
     workspaces {
-      name = "k8s-ctf"
+      name = "k8s-ctf-terraform"
     }
   }
+}
+
+provider "digitalocean" {
+  token = var.do_token
 }
 
 provider "google" {
