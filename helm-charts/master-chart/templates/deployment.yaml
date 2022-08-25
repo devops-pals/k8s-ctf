@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".Values.challengeName" }}
+  labels:
+    category: {{ .Values.metadata.category }}
+spec:
+  replicas: {{ .Values.spec.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.challengeName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.challengeName }}
+        category: {{ .Values.metadata.category }}
+    spec:
+      containers:
+        - name: {{ .Values.challengeName }}
+          image: {{ .Values.spec.challengeImage }}
+          ports:
+            - containerPort: {{ .Values.spec.containerPort}}

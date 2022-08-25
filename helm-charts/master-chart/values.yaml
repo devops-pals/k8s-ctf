@@ -1,0 +1,19 @@
+challengeName: "None-specified"
+
+metadata:
+  category: "None"
+
+spec:
+  challengeImage: "None"
+  externalPort: 80
+  containerPort: 5000
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "None"
+  pathType: "Prefix"
+
+service:
+  enabled: false
+  type: NodePort

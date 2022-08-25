@@ -1,5 +1,19 @@
-category: "web"
 challengeName: "blame-the-intern"
-challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/blame-the-intern:1.0"
-externalPort: 80
-containerPort: 5000
+
+metadata:
+  category: "web"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/blame-the-intern:1.0"
+  externalPort: 80
+  containerPort: 5000
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  host: "web1.scriptkitties.dev"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort

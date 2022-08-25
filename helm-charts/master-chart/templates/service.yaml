@@ -1,0 +1,14 @@
+{{- if .Values.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.challengeName  }}
+  labels:
+    category: {{ .Values.category }}
+spec:
+  selector: {{ .Values.challengeName }}
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.spec.externalPort }}
+      targetPort: {{ .Values.spec.containerPort }}
+{{ end }}
