@@ -1,14 +1,17 @@
+{{- define "master-chart.service" -}}
 {{- if .Values.service.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.challengeName  }}
   labels:
-    category: {{ .Values.category }}
+    category: {{ .Values.metadata.category }}
 spec:
-  selector: {{ .Values.challengeName }}
+  selector:
+    app: {{ .Values.challengeName }}
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.spec.externalPort }}
       targetPort: {{ .Values.spec.containerPort }}
+{{ end }}
 {{ end }}

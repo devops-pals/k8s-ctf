@@ -1,7 +1,8 @@
+{{- define "master-chart.deployment" -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include ".Values.challengeName" }}
+  name: {{ .Values.challengeName }}
   labels:
     category: {{ .Values.metadata.category }}
 spec:
@@ -20,3 +21,4 @@ spec:
           image: {{ .Values.spec.challengeImage }}
           ports:
             - containerPort: {{ .Values.spec.containerPort}}
+{{- end }}

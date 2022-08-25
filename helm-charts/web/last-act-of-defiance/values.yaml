@@ -3,3 +3,24 @@ challengeName: "last-act-of-defiance"
 challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/last-act-of-defiance:1.0"
 externalPort: 80
 containerPort: 80
+
+
+challengeName: "last-act-of-defiance"
+
+metadata:
+  category: "web"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/last-act-of-defiance:1.0"
+  externalPort: 80
+  containerPort: 80
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  host: "web2.scriptkitties.dev"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort

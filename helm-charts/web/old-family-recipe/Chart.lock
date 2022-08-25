@@ -3,4 +3,4 @@ dependencies:
   repository: oci://us-central1-docker.pkg.dev/k8s-ctf-345001/helm-repo
   version: 0.1.5
 digest: sha256:96dda6834264dc0ed4019c0ff7b997dadaa5b2ced72acaceb3dc5192411d5fac
-generated: "2022-08-25T00:45:58.891842662-06:00"
+generated: "2022-08-25T01:08:25.080252525-06:00"

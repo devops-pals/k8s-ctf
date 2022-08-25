@@ -1,0 +1,25 @@
+{{- define "master-chart.ingress" -}}
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ .Values.challengeName }}-ingress"
+  annotations:
+  {{- if eq .Values.metadata.category "web"}}
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "ingress-{{ .Values.metadata.category}}challs"
+  {{ end }}
+spec:
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - pathType: {{ .Values.ingress.pathType}}
+            path: "/"
+            backend:
+              service:
+                name: {{ .Values.challengeName }}
+                port:
+                  number: {{ .Values.spec.externalPort }}
+{{ end }}
+{{ end }}
