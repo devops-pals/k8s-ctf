@@ -3,23 +3,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "{{ .Values.challengeName }}-ingress"
+  name: "{{ .Values.category }}-ingress"
   annotations:
-  {{- if eq .Values.metadata.category "web"}}
+  {{- if eq .Values.category "web"}}
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "ingress-{{ .Values.metadata.category}}challs"
-  {{ end }}
+    kubernetes.io/ingress.global-static-ip-name: "ingress-{{ .Values.category}}challs"
+  {{- end }}
 spec:
   rules:
-    - host: {{ .Values.ingress.host }}
+  {{- range $key, $value := .Values.ingress.challenges }}
+    - host: {{ $value.host }}
       http:
         paths:
-          - pathType: {{ .Values.ingress.pathType}}
+          - pathType: {{ $value.pathType }}
             path: "/"
             backend:
               service:
-                name: {{ .Values.challengeName }}
+                name: {{ $value.challengeName }}
                 port:
-                  number: {{ .Values.spec.externalPort }}
-{{ end }}
-{{ end }}
+                  number: {{ $value.externalPort }}
+  {{- end }}
+{{- end }}
+{{- end }}

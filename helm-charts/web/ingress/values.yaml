@@ -1,0 +1,22 @@
+category: "web"
+ingress:
+  enabled: true
+  challenges:
+    web1:
+      host: "web1.scriptkitties.dev"
+      pathType: "Prefix"
+      challengeName: "blame-the-intern"
+      externalPort: 80
+      containerPort: 5000
+    web2:
+      host: "web2.scriptkitties.dev"
+      pathType: "Prefix"
+      challengeName: "last-act-of-defiance"
+      externalPort: 80
+      containerPort: 5000
+    web3:
+      host: "web3.scriptkitties.dev"
+      pathType: "Prefix"
+      challengeName: "old-family-recipe"
+      externalPort: 80
+      containerPort: 5000
