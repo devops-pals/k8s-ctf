@@ -1,0 +1,20 @@
+challengeName: "biometric-heap"
+
+metadata:
+  category: "binary"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/biometric-heap:latest"
+  externalPort: 3609
+  containerPort: 3609
+  replicaCount: 1
+  privileged: true
+
+ingress:
+  enabled: true
+  host: "web1.scriptkitties.dev"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort

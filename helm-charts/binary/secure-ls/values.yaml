@@ -1,0 +1,15 @@
+challengeName: "secure-ls"
+
+metadata:
+  category: "secure-ls"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/secure-ls:1.0"
+  externalPort: 8754
+  containerPort: 8754
+  replicaCount: 1
+  privileged: true
+
+service:
+  enabled: true
+  type: NodePort

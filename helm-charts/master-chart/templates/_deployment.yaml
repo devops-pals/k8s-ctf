@@ -6,6 +6,7 @@ metadata:
   labels:
     category: {{ .Values.metadata.category }}
 spec:
+  privileged: {{ .Values.spec.privileged | default "false" }}
   replicas: {{ .Values.spec.replicaCount }}
   selector:
     matchLabels:

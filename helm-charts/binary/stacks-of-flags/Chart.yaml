@@ -1,0 +1,12 @@
+apiVersion: 2
+name: stacks-of-flags
+description: stacks-of-flags CTF challenge
+
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+
+dependencies:
+  - name: master-chart
+    repository: oci://us-central1-docker.pkg.dev/k8s-ctf-345001/helm-repo
+    version: ~0.1.0
