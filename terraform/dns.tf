@@ -23,7 +23,19 @@ resource "digitalocean_record" "web3" {
   value  = google_compute_global_address.ingress_webchalls.address
 }
 
+resourece "digitalocean_record" "ctfd" {
+  domain = data.digitalocean_domain.default.id
+  type = "A"
+  name = "ctfd"
+  value = google_compute_global_address.ctfd.address
+}
+
 resource "google_compute_global_address" "ingress_webchalls" {
   name = "ingress-webchalls"
   address_type = "EXTERNAL"
+}
+
+resourece "google_compute_global_address" "ctfd" {
+  name = "ctfd"
+  address_type = "EXTRENAL"
 }

@@ -16,3 +16,8 @@ variable "helm_registry_enabled" {
   type    = bool
   default = false
 }
+
+variable "node_count" {
+  type = number
+  default = 1
+}
