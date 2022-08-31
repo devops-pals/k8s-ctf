@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "ctfd-ingress"
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "ingress-ctfd"
+spec:
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - pathType: {{ .Values.ingress.pathType }}
+            path: "/"
+            backend:
+              service:
+                name: {{ .Values.ctfd.name }}
+                port:
+                  number: {{ .Values.ingress.externalPort }}

@@ -1,0 +1,34 @@
+
+secretName: database-secrets
+
+volume:
+  mysqlClaimName: mysql-volume
+  redisClaimName: redis-volume
+  ctfdLogsClaimName: ctfd-log-volume
+  ctfdUploadClaimName: ctfd-upload-voume
+  claimSize: 200Mi
+  ctfdLogsSize: 100Mi
+  ctfdUploadSize: 500Mi
+
+mysql:
+  name: ctfd-mysql-db
+  image: mariadb:10.9.2
+  port: 3306
+  replicas: 1
+
+redis:
+  name: ctfd-redis-cache
+  image: redis:7.0.4
+  port: 6379
+  replicas: 1
+
+ctfd:
+  name: ctfd
+  port: 8000
+  gunicornWorkers: 1
+
+ingress:
+  enabled: true
+  host: "web1.scriptkitties.dev"
+  pathType: "Prefix"
+  externalPort: 80

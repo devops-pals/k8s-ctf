@@ -1,5 +1,5 @@
 data "digitalocean_domain" "default" {
-  name = "scriptkitties.dev"
+  name = "jeremystuart.ca"
 }
 
 resource "digitalocean_record" "web1" {

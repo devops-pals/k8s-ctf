@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.volume.mysqlClaimName }} }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.volume.claimSize }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.mysql.name }}
+spec:
+  replicas: {{ .Values.mysql.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.mysql.name }}
+  strategy:
+    type: Recreate
+  template:
+      labels:
+        app: {{ .Values.mysql.name }}
+    spec:
+      containers:
+        env:
+        - name: MYSQL_DATABASE
+          value: ctfd
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretName }}
+              key: mysql-user-password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretName }}
+              key: mysql-root-password
+        - name: MYSQL_USER
+          value: ctfd
+        image: {{ .Values.mysql.image }}
+        imagePullPolicy: ""
+        name: {{ .Values.mysql.name }}
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: {{ .Values.volume.mysqlClaimName }}
+      restartPolicy: Always
+      volumes:
+      - name: {{ .Values.volume.mysqlClaimName }}
+        persistentVolumeClaim:
+          ClaimName: {{ .Values.volume.mysqlClaimName }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.mysql.name }}
+spec:
+  ports:
+  - name: mysql
+    port: {{ .Values.mysql.port }}
+    protocol: TCP
+    targetPort: {{ .Values.mysql.port }}
+  selector:
+    app: {{ .Values.mysql.name }}
+  type: ClusterIP
