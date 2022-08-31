@@ -15,18 +15,15 @@ metadata:
   name: {{ .Values.volume.ctfdUploadClaimName }}
 spec:
   accessModes:
-  - ReadWriteOnce
+   - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.volume.ctfdUploadClaimName }}
+      storage: {{ .Values.volume.ctfdUploadSize }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: ctfd
-  creationTimestamp: null
-  name: ctfdPersistentVolumeClaim
-    app: ctfd
+  name: ctfd
 spec:
   replicas: 1
   selector:
@@ -45,8 +42,13 @@ spec:
       - env:
         - name: ACCESS_LOG
           value: '-'
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.secretName }}
+              key: mysql-user-password
         - name: DATABASE_URL
-          value: mysql+pymysql://ctfd:ctfd@ctfd-mysql-db/ctfd
+          value: mysql+pymysql://ctfd:^uNdUZ%sDHTMp73Za7sAo3fgLz*JP#Rmy64%L#&M@ctfd-mysql-db/ctfd
         - name: ERROR_LOG
           value: '-'
         - name: LOG_FOLDER
@@ -81,10 +83,10 @@ metadata:
   name: {{ .Values.ctfd.name }}
 spec:
   ports:
-  - name: ui
+  - name: {{ .Values.ctfd.name }}
     port: {{ .Values.ctfd.port }}
     protocol: TCP
-    targetPort: {{ .Values.ctfd.port }}
+    targetPort: {{ .Values.ctfd.targetPort }}
   selector:
     app: {{ .Values.ctfd.name }}
-  type: ClusterIP
+  type: NodePort

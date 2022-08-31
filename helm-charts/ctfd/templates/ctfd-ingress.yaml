@@ -4,8 +4,8 @@ metadata:
   name: "ctfd-ingress"
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "ingress-ctfd"
-spec:
+    kubernetes.io/ingress.global-static-ip-name: "ctfd"
+spec: 
   rules:
     - host: {{ .Values.ingress.host }}
       http:

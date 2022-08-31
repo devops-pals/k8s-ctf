@@ -1,4 +1,4 @@
-apiVersion: 2
+apiVersion: v2
 name: ctf-deployment
 description: Charts to deploy CTFd
 

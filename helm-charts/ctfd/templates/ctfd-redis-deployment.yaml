@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.volume.redisClaimName }}
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.volume.claimSize }}
@@ -13,8 +13,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.redis.name }}
-  labels:
-    app: {{ .Values.redis.name }}
 spec:
   replicas: {{ .Values.redis.replicas }}
   selector:
@@ -24,6 +22,7 @@ spec:
     type: Recreate
   template:
     metadata:
+      labels:
         app: {{ .Values.redis.name }}
     spec:
       containers:
@@ -42,8 +41,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: {{ .Values.redis.name }}
+  name: {{ .Values.redis.name }}
 spec:
   ports:
   - name: redis

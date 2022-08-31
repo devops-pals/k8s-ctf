@@ -1,20 +1,18 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.volume.mysqlClaimName }} }}
+  name: {{ .Values.volume.mysqlClaimName }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.volume.claimSize }}
-
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: {{ .Values.mysql.name }}
+  name: {{ .Values.mysql.name }}
 spec:
   replicas: {{ .Values.mysql.replicas }}
   selector:
@@ -23,11 +21,12 @@ spec:
   strategy:
     type: Recreate
   template:
+    metadata:
       labels:
         app: {{ .Values.mysql.name }}
     spec:
       containers:
-        env:
+      - env:
         - name: MYSQL_DATABASE
           value: ctfd
         - name: MYSQL_PASSWORD
@@ -43,7 +42,6 @@ spec:
         - name: MYSQL_USER
           value: ctfd
         image: {{ .Values.mysql.image }}
-        imagePullPolicy: ""
         name: {{ .Values.mysql.name }}
         volumeMounts:
         - mountPath: /var/lib/mysql
@@ -52,13 +50,12 @@ spec:
       volumes:
       - name: {{ .Values.volume.mysqlClaimName }}
         persistentVolumeClaim:
-          ClaimName: {{ .Values.volume.mysqlClaimName }}
+          claimName: {{ .Values.volume.mysqlClaimName }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: {{ .Values.mysql.name }}
+  name: {{ .Values.mysql.name }}
 spec:
   ports:
   - name: mysql

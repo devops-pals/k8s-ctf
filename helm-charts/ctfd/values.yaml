@@ -5,7 +5,7 @@ volume:
   mysqlClaimName: mysql-volume
   redisClaimName: redis-volume
   ctfdLogsClaimName: ctfd-log-volume
-  ctfdUploadClaimName: ctfd-upload-voume
+  ctfdUploadClaimName: ctfd-upload-volume
   claimSize: 200Mi
   ctfdLogsSize: 100Mi
   ctfdUploadSize: 500Mi
@@ -25,10 +25,12 @@ redis:
 ctfd:
   name: ctfd
   port: 8000
+  targetPort: 8000
   gunicornWorkers: 1
 
 ingress:
   enabled: true
-  host: "web1.scriptkitties.dev"
+  host: "ctfd.jeremystuart.ca"
   pathType: "Prefix"
-  externalPort: 80
+  externalPort: 8000
+  internalPort: 8000
