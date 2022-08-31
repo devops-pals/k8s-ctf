@@ -37,5 +37,5 @@ resource "google_compute_global_address" "ingress_webchalls" {
 
 resource "google_compute_global_address" "ctfd" {
   name = "ctfd"
-  address_type = "EXTRENAL"
+  address_type = "EXTERNAL"
 }
