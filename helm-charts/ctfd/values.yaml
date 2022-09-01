@@ -24,7 +24,7 @@ redis:
 
 ctfd:
   name: ctfd
-  port: 8000
+  port: 80
   targetPort: 8000
   gunicornWorkers: 1
 
@@ -32,5 +32,4 @@ ingress:
   enabled: true
   host: "ctfd.jeremystuart.ca"
   pathType: "Prefix"
-  externalPort: 8000
-  internalPort: 8000
+  externalPort: 80

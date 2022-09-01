@@ -68,6 +68,12 @@ spec:
           name: {{ .Values.volume.ctfdLogsClaimName }}
         - mountPath: /var/uploads
           name: {{ .Values.volume.ctfdUploadClaimName }}
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 3
       restartPolicy: Always
       volumes:
       - name: {{ .Values.volume.ctfdLogsClaimName }}
@@ -76,6 +82,7 @@ spec:
       - name: {{ .Values.volume.ctfdUploadClaimName }}
         persistentVolumeClaim:
           claimName: {{ .Values.volume.ctfdUploadClaimName }}
+      
 ---
 apiVersion: v1
 kind: Service
