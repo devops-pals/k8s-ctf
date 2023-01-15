@@ -42,7 +42,7 @@
 
 resource "google_dns_managed_zone" "ctf_dns" {
   name = "ctf-zone"
-  dns_name = "jstuart.ca"
+  dns_name = "jstuart.ca."
 }
 
 # resource "google_dns_record_set" "web1" {
