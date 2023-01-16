@@ -3,19 +3,19 @@ ingress:
   enabled: true
   challenges:
     web1:
-      host: "web1.jeremystuart.ca"
+      host: "web1.jstuart.ca"
       pathType: "Prefix"
       challengeName: "blame-the-intern"
       externalPort: 80
       containerPort: 5000
     web2:
-      host: "web2.jeremystuart.ca"
+      host: "web2.jstuart.ca"
       pathType: "Prefix"
       challengeName: "last-act-of-defiance"
       externalPort: 80
       containerPort: 5000
     web3:
-      host: "web3.jeremystuart.ca"
+      host: "web3.jstuart.ca"
       pathType: "Prefix"
       challengeName: "old-family-recipe"
       externalPort: 80

@@ -21,3 +21,8 @@ variable "node_count" {
   type = number
   default = 1
 }
+
+variable "project_name" {
+  type = string
+  default = "k8s-ctf-345001"
+}
