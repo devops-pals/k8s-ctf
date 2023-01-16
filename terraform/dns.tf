@@ -56,5 +56,5 @@ resource "google_dns_record_set" "web1" {
 
   managed_zone = google_dns_managed_zone.ctf_dns.name
 
-  rrdatas = google_compute_global_address.ingress_webchalls.address
+  rrdatas = [google_compute_global_address.ingress_webchalls.address]
 }
