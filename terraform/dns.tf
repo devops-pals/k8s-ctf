@@ -70,7 +70,7 @@ resource "google_dns_record_set" "web2" {
 }
 
 resource "google_dns_record_set" "web3" {
-  name = "web1.${google_dns_managed_zone.ctf_dns.dns_name}"
+  name = "web3.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300
 
