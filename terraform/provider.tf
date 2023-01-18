@@ -14,10 +14,6 @@ terraform {
   }
 }
 
-provider "digitalocean" {
-  token = var.do_token
-}
-
 provider "google" {
   project = "k8s-ctf-345001"
   region  = "us-central1"

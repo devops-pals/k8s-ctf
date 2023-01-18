@@ -1,7 +1,3 @@
-variable "do_token" {
-  type    = string
-}
-
 variable "gke_enabled" {
   type    = bool
   default = false

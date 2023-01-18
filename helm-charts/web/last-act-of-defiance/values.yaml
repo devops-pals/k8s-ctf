@@ -4,7 +4,6 @@ challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/last-act-
 externalPort: 80
 containerPort: 80
 
-
 challengeName: "last-act-of-defiance"
 
 metadata:
