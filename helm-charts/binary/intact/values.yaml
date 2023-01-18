@@ -10,6 +10,11 @@ spec:
   replicaCount: 1
   privileged: true
 
+ingress:
+  enabled: true
+  host: "bin2.jstuart.ca"
+  pathType: "Prefix"
+
 service:
   enabled: true
   type: NodePort

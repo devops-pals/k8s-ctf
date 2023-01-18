@@ -11,7 +11,7 @@ spec:
 
 ingress:
   enabled: true
-  host: "web3.scriptkitties.dev"
+  host: "web3.jstuart.ca"
   pathType: "Prefix"
 
 service:

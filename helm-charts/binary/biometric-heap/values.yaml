@@ -4,7 +4,7 @@ metadata:
   category: "binary"
 
 spec:
-  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/biometric-heap:latest"
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/biometric-heap:1.0"
   externalPort: 3609
   containerPort: 3609
   replicaCount: 1
@@ -12,7 +12,7 @@ spec:
 
 ingress:
   enabled: true
-  host: "web1.scriptkitties.dev"
+  host: "bin1.jstuart.ca"
   pathType: "Prefix"
 
 service:
