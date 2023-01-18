@@ -1,52 +1,20 @@
-# data "digitalocean_domain" "default" {
-#   name = "jeremystuart.ca"
-# }
+# DNS Zone
+resource "google_dns_managed_zone" "ctf_dns" {
+  name = "ctf-zone"
+  dns_name = "jstuart.ca."
+}
 
-# resource "digitalocean_record" "web1" {
-#   domain = data.digitalocean_domain.default.id
-#   type   = "A"
-#   name   = "web1"
-#   value  = google_compute_global_address.ingress_webchalls.address
-# }
-
-# resource "digitalocean_record" "web2" {
-#   domain = data.digitalocean_domain.default.id
-#   type   = "A"
-#   name   = "web2"
-#   value  = google_compute_global_address.ingress_webchalls.address
-# }
-
-# resource "digitalocean_record" "web3" {
-#   domain = data.digitalocean_domain.default.id
-#   type   = "A"
-#   name   = "web3"
-#   value  = google_compute_global_address.ingress_webchalls.address
-# }
-
-# resource "digitalocean_record" "ctfd" {
-#   domain = data.digitalocean_domain.default.id
-#   type = "A"
-#   name = "ctfd"
-#   value = google_compute_global_address.ctfd.address
-# }
+###############################################################################
+#
+# Web DNS and IP settings
+#
+###############################################################################
 
 resource "google_compute_global_address" "ingress_webchalls" {
   name = "ingress-webchalls"
   address_type = "EXTERNAL"
   project = var.project_name
   ip_version = "IPV4"
-}
-
-resource "google_compute_global_address" "ctfd" {
-  name = "ctfd"
-  address_type = "EXTERNAL"
-  project = var.project_name
-  ip_version = "IPV4"
-}
-
-resource "google_dns_managed_zone" "ctf_dns" {
-  name = "ctf-zone"
-  dns_name = "jstuart.ca."
 }
 
 resource "google_dns_record_set" "web1" {
@@ -77,4 +45,72 @@ resource "google_dns_record_set" "web3" {
   managed_zone = google_dns_managed_zone.ctf_dns.name
 
   rrdatas = [google_compute_global_address.ingress_webchalls.address]
+}
+
+###############################################################################
+#
+# Binary DNS and IP settings
+#
+###############################################################################
+
+resource "google_compute_global_address" "ingress_binchalls" {
+  name = "ingress-binchalls"
+  address_type = "EXTERNAL"
+  project = var.project_name
+  ip_version = "IPV4"
+}
+
+resource "google_dns_record_set" "bin1" {
+  name = "bin1.${google_dns_managed_zone.ctf_dns.dns_name}"
+  type = "A"
+  ttl  = 300
+
+  managed_zone = google_dns_managed_zone.ctf_dns.name
+
+  rrdatas = [google_compute_global_address.ingress_binchalls.address]
+}
+
+resource "google_dns_record_set" "bin2" {
+  name = "bin2.${google_dns_managed_zone.ctf_dns.dns_name}"
+  type = "A"
+  ttl  = 300
+
+  managed_zone = google_dns_managed_zone.ctf_dns.name
+
+  rrdatas = [google_compute_global_address.ingress_binchalls.address]
+}
+
+resource "google_dns_record_set" "bin3" {
+  name = "bin3.${google_dns_managed_zone.ctf_dns.dns_name}"
+  type = "A"
+  ttl  = 300
+
+  managed_zone = google_dns_managed_zone.ctf_dns.name
+
+  rrdatas = [google_compute_global_address.ingress_binchalls.address]
+}
+
+resource "google_dns_record_set" "bin4" {
+  name = "bin4.${google_dns_managed_zone.ctf_dns.dns_name}"
+  type = "A"
+  ttl  = 300
+
+  managed_zone = google_dns_managed_zone.ctf_dns.name
+
+  rrdatas = [google_compute_global_address.ingress_binchalls.address]
+}
+
+###############################################################################
+#
+# CTFd DNS and IP settings
+#
+###############################################################################
+
+
+
+resource "google_compute_global_address" "ctfd" {
+  name = "ctfd"
+  address_type = "EXTERNAL"
+  project = var.project_name
+  ip_version = "IPV4"
 }

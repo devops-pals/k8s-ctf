@@ -1,0 +1,28 @@
+category: "binary"
+ingress:
+  enabled: true
+  challenges:
+    bin1:
+      host: "bin1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "biometric-heap"
+      externalPort: 3609
+      containerPort: 3609
+    bin2:
+      host: "bin2.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "intact"
+      externalPort: 2007
+      containerPort: 2007
+    bin3:
+      host: "bin3.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "secure-ls"
+      externalPort: 8754
+      containerPort: 8754
+    bin4:
+      host: "bin4.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "stacks-of-flags"
+      externalPort: 1946
+      containerPort: 1946
