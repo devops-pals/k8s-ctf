@@ -17,4 +17,4 @@ ingress:
 
 service:
   enabled: true
-  type: NodePort
+  type: LoadBalancer

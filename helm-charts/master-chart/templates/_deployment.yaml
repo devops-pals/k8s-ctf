@@ -6,7 +6,6 @@ metadata:
   labels:
     category: {{ .Values.metadata.category }}
 spec:
-  privileged: {{ .Values.spec.privileged | default "false" }}
   replicas: {{ .Values.spec.replicaCount }}
   selector:
     matchLabels:
@@ -22,4 +21,6 @@ spec:
           image: {{ .Values.spec.challengeImage }}
           ports:
             - containerPort: {{ .Values.spec.containerPort }}
+          securityContext:
+            privileged: {{ .Values.spec.privileged | default "false" }}
 {{- end }}
