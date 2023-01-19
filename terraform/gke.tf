@@ -13,7 +13,7 @@ resource "google_container_cluster" "primary" {
   dns_config {
     cluster_dns = "CLOUD_DNS"
     cluster_dns_scope = "VPC_SCOPE"
-    cluster_dns_domain = ".ctf.cluster"
+    cluster_dns_domain = ".jstuart.ca"
   }
 }
 
