@@ -15,6 +15,11 @@ resource "google_container_cluster" "primary" {
     cluster_dns_scope = "VPC_SCOPE"
     cluster_dns_domain = "jstuart.ca"
   }
+
+  workload_identity_config {
+    identity_namespace = "${var.project_}.svc.id.goog"
+  }
+
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
@@ -24,10 +29,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   location   = "us-central1-a"
   cluster    = google_container_cluster.primary[count.index].name
   node_count = var.node_count
-
-  workload_identity_config {
-    identity_namespace = "${var.project_name}.svc.id.goog"
-  }
 
   node_config {
     preemptible  = true
