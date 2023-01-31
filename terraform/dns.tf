@@ -53,13 +53,6 @@ resource "google_dns_record_set" "web3" {
 #
 ###############################################################################
 
-resource "google_compute_global_address" "ingress_binchalls" {
-  name = "ingress-binchalls"
-  address_type = "EXTERNAL"
-  project = var.project_name
-  ip_version = "IPV4"
-}
-
 resource "google_dns_record_set" "bin1" {
   name = "bin1.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
@@ -108,9 +101,9 @@ resource "google_dns_record_set" "bin4" {
 
 
 
-resource "google_compute_global_address" "ctfd" {
-  name = "ctfd"
-  address_type = "EXTERNAL"
-  project = var.project_name
-  ip_version = "IPV4"
-}
+# resource "google_compute_global_address" "ctfd" {
+#   name = "ctfd"
+#   address_type = "EXTERNAL"
+#   project = var.project_name
+#   ip_version = "IPV4"
+# }
