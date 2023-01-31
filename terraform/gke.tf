@@ -25,11 +25,21 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster    = google_container_cluster.primary[count.index].name
   node_count = var.node_count
 
+  workload_identity_config {
+    identity_namespace = "${var.project_name}.svc.id.goog"
+  }
+
   node_config {
     preemptible  = true
     machine_type = "e2-small"
     oauth_scopes = [
-      "https://www.googleapis.com/auth/devstorage.read_only"
+      "https://www.googleapis.com/auth/devstorage.read_only", 
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
     ]
+
+    workload_metadata_config {
+      node_metadata = "GKE_METADATA_SERVER"
+    }
   }
 }

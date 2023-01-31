@@ -11,10 +11,10 @@ spec:
   privileged: true
 
 ingress:
-  enabled: true
+  enabled: false
   host: "bin3.jstuart.ca"
   pathType: "Prefix"
 
 service:
   enabled: true
-  type: NodePort
+  type: LoadBalancer
