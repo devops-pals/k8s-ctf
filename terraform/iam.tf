@@ -17,5 +17,7 @@ resource "google_project_iam_member" "external_dns_member" {
 resource "google_project_iam_binding" "external-dns-binding" {
     project = var.project_name
     role = "roles/iam.workloadIdentityUser"
-    member = "serviceAccount:${var.project_name}.svc.id.goog[external-dns/external-dns]"
+    members = [
+        "serviceAccount:${var.project_name}.svc.id.goog[external-dns/external-dns]",
+    ]
 }
