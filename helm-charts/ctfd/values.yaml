@@ -30,6 +30,6 @@ ctfd:
 
 ingress:
   enabled: true
-  host: "ctfd.jeremystuart.ca"
+  host: "ctfd.jstuart.ca"
   pathType: "Prefix"
   externalPort: 80

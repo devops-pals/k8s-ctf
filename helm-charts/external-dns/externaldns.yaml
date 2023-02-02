@@ -1,3 +1,6 @@
+# tutorial followed to setup external-dns here: https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/gke.md
+
+# service account for External-DNS to set DNS records in GCP Cloud DNS
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -7,6 +10,7 @@ metadata:
   annotations:
     iam.gke.io/gcp-service-account: external-dns@k8s-ctf-345001.iam.gserviceaccount.com 
 ---
+# cluster role allowing the service account to watch services, ingresses, pods, nodes, and endpoints
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -21,6 +25,7 @@ rules:
     resources: ["ingresses"]
     verbs: ["get","watch","list"]
 ---
+# cluster binding for the service account
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -36,6 +41,8 @@ subjects:
     name: external-dns
     namespace: external-dns
 ---
+# deployment for external-dns, hardcoded to watch jstuart.ca
+#TODO: make domain a variable, make project a variable, set the image to be most up to date
 apiVersion: apps/v1
 kind: Deployment
 metadata:

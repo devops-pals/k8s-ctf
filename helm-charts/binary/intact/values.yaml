@@ -18,3 +18,5 @@ ingress:
 service:
   enabled: true
   type: LoadBalancer
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: bin2.jstuart.ca

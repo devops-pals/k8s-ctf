@@ -4,6 +4,7 @@ resource "google_service_account" "external-dns" {
     display_name = "external-dns service account"
 }
 
+# allow external-dns service account to be an admin for dns records in Cloud DNS
 resource "google_project_iam_member" "external_dns_member" {
     for_each = toset([
         "roles/dns.admin",
@@ -14,6 +15,7 @@ resource "google_project_iam_member" "external_dns_member" {
     member = "serviceAccount:${google_service_account.external-dns.email}"
 }
 
+# give the Kubernetes Service Account (hardcoded to external-dns in the external-dns namespace) to impersonate a Google Service Account
 resource "google_project_iam_binding" "external-dns-binding" {
     project = var.project_name
     role = "roles/iam.workloadIdentityUser"
