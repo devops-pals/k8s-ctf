@@ -6,6 +6,12 @@ metadata:
   name: {{ .Values.challengeName  }}
   labels:
     category: {{ .Values.metadata.category }}
+  {{- if ((.Values.service).annotations) }}
+  annotations:
+    {{- range $key, $value := .Values.service.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
 spec:
   selector:
     app: {{ .Values.challengeName }}

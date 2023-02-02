@@ -5,8 +5,13 @@ resource "google_service_account" "external-dns" {
 }
 
 resource "google_project_iam_member" "external_dns_role_binding" {
+    for_each = toset([
+        "roles/dns.admin",
+        "roles/iam.workloadIdentityUser",
+    ])
+    
     project = var.project_name
-    role = "roles/dns.admin"
+    role = each.key
     member = "serviceAccount:${google_service_account.external-dns.email}"
 }
 
