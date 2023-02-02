@@ -60,7 +60,7 @@ resource "google_compute_global_address" "ctfd-ingress" {
   ip_version = "IPV4"
 }
 
-resource "google_dns_record_set" "web1" {
+resource "google_dns_record_set" "ctfd" {
   name = "ctfd.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300
