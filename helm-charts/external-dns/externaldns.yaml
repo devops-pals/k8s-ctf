@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: external-dns
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: external-dns@k8s-ctf-345001.iam.gserviceaccount.com 
+    iam.gke.io/gcp-service-account: external-dns@k8s-ctf-345001.iam.gserviceaccount.com 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -54,6 +54,8 @@ spec:
         app.kubernetes.io/name: external-dns
     spec:
       serviceAccountName: external-dns
+      nodeSelector:
+        iam.gke.io/gke-metadata-server-enabled: "true"
       containers:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.13.1
