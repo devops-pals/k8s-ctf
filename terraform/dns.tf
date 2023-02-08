@@ -11,7 +11,7 @@ resource "google_dns_managed_zone" "ctf_dns" {
 ###############################################################################
 
 resource "google_compute_global_address" "ingress_webchalls" {
-  count = var.gke_enabled ? 1 : 0
+  count = var.dns_enabled ? 1 : 0
   name = "ingress-webchalls"
   address_type = "EXTERNAL"
   project = var.project_name
@@ -19,6 +19,7 @@ resource "google_compute_global_address" "ingress_webchalls" {
 }
 
 resource "google_dns_record_set" "web1" {
+  count = var.dns_enabled ? 1 : 0
   name = "web1.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300
@@ -29,6 +30,7 @@ resource "google_dns_record_set" "web1" {
 }
 
 resource "google_dns_record_set" "web2" {
+  count = var.dns_enabled ? 1 : 0
   name = "web2.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300
@@ -39,6 +41,7 @@ resource "google_dns_record_set" "web2" {
 }
 
 resource "google_dns_record_set" "web3" {
+  count = var.dns_enabled ? 1 : 0
   name = "web3.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300
@@ -55,7 +58,7 @@ resource "google_dns_record_set" "web3" {
 ###############################################################################
 
 resource "google_compute_global_address" "ctfd-ingress" {
-  count = var.gke_enabled ? 1 : 0
+  count = var.dns_enabled ? 1 : 0
   name = "ctfd"
   address_type = "EXTERNAL"
   project = var.project_name
@@ -63,6 +66,7 @@ resource "google_compute_global_address" "ctfd-ingress" {
 }
 
 resource "google_dns_record_set" "ctfd" {
+  count = var.dns_enabled ? 1 : 0
   name = "ctfd.${google_dns_managed_zone.ctf_dns.dns_name}"
   type = "A"
   ttl  = 300

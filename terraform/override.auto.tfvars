@@ -1,4 +1,5 @@
 gke_enabled             = false
+dns_enabled             = false
 docker_registry_enabled = true
 helm_registry_enabled   = true
 node_count = 2
