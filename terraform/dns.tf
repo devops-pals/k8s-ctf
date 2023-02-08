@@ -11,6 +11,7 @@ resource "google_dns_managed_zone" "ctf_dns" {
 ###############################################################################
 
 resource "google_compute_global_address" "ingress_webchalls" {
+  count = var.gke_enabled ? 1 : 0
   name = "ingress-webchalls"
   address_type = "EXTERNAL"
   project = var.project_name
@@ -54,6 +55,7 @@ resource "google_dns_record_set" "web3" {
 ###############################################################################
 
 resource "google_compute_global_address" "ctfd-ingress" {
+  count = var.gke_enabled ? 1 : 0
   name = "ctfd"
   address_type = "EXTERNAL"
   project = var.project_name
