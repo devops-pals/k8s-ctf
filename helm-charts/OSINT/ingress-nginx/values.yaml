@@ -1,0 +1,7 @@
+controller:
+  service:
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: osint3.jstuart.ca
+tcp:
+  8081: "osint/garbage-collector-frontend:8081"
+  3000: "osint/garbage-collector-backend:3000"
