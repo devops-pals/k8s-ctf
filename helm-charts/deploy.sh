@@ -12,12 +12,15 @@ kubectl create namespace osint
 kubectl create --filename ./external-dns/externaldns.yaml -n external-dns
 
 # deploy ingress-nginx
-./ingress-nginx/deploy.sh
+cd ./ingress-nginx
+./deploy.sh
+cd ..
 
-# deploy ctfd
-./ctfd/startup.sh
+categories=("ctfd" "binary" "OSINT" "web")
 
-# deploy each category
-./binary/startup.sh
-./OSINT/startup.sh
-./web/startup.sh
+for name in ${categories[@]}; do 
+    cd ./$name
+    ./startup.sh
+    cd ..
+done
+

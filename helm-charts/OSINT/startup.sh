@@ -1,5 +1,10 @@
 #!/bin/bash
 
+get_abs_filename() {
+  # $1 : relative filename
+  echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+}
+
 cd ingress-nginx
 ./deploy.sh
 cd ..
