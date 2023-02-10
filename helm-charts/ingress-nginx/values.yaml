@@ -1,8 +1,13 @@
 controller:
   service:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: osint3.jstuart.ca, bin1.jstuart.ca
+      external-dns.alpha.kubernetes.io/hostname: osint3.jstuart.ca, bin1.jstuart.ca, bin2.jstuart.ca, bin3.jstuart.ca, bin4.jstuart.ca, crypto1.jstuart.ca, crypto2.jstuart.ca
 tcp:
   8081: "osint/garbage-collector-frontend:8081"
   3000: "osint/garbage-collector-backend:3000"
   3609: "binary/biometric-heap:3609"
+  2007: "binary/intact:2007"
+  8754: "binary/secure-ls:8754"
+  1946: "binary/stacks-of-flags:1946"
+  31337: "crypto/one-true-encryption:31137"
+  20000: "crypto/diversionary-havoc:20000"

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-namespaces=("external-dns" "ingress-nginx" "ctfd" "binary" "osint" "web" "crypto")
-resources=("external-dns" "ingress-nginx" "ctfd")
-categories=("binary" "osint" "web" "crypto")
+namespaces=("external-dns" "ingress-nginx" "binary" "osint" "web" "crypto")
+resources=("external-dns" "ingress-nginx")
+categories=("osint" "web")
 
 
 # create namespaces

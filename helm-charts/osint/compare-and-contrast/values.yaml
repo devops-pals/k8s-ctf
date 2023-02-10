@@ -17,6 +17,4 @@ ingress:
 
 service:
   enabled: true
-  type: LoadBalancer
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: osint1.jstuart.ca
+  type: ClusterIP

@@ -20,3 +20,9 @@ ingress:
       challengeName: "old-family-recipe"
       externalPort: 80
       containerPort: 5000
+    osint1:
+      host: "osint1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "compare-and-contrast"
+      externalPort: 80
+      containerPort: 8000
