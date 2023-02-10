@@ -4,7 +4,8 @@ metadata:
   category: "secure-ls"
 
 spec:
-  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/secure-ls:1.0"
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/secure-ls"
+  challengeImageVersion: "1.0"
   externalPort: 8754
   containerPort: 8754
   replicaCount: 1

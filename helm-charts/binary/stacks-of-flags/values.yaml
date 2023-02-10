@@ -4,7 +4,8 @@ metadata:
   category: "stacks-of-flags"
 
 spec:
-  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/stacks-of-flags:1.0"
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/stacks-of-flags"
+  challengeImageVersion: "1.0"
   externalPort: 1946
   containerPort: 1946
   replicaCount: 1

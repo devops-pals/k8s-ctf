@@ -4,7 +4,8 @@ metadata:
   category: "web"
 
 spec:
-  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/old-family-recipe:1.0"
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/old-family-recipe"
+  challengeImageVersion: "1.0"
   externalPort: 80
   containerPort: 80
   replicaCount: 1

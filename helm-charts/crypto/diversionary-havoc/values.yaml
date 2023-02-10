@@ -1,0 +1,22 @@
+challengeName: "diverionsary-havoc"
+
+metadata:
+  category: "crypto"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/diversionary-havoc"
+  challengeImageVersion: "1.0"
+  externalPort: 20000
+  containerPort: 20000
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "crypto1.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: crypto1.jstuart.ca

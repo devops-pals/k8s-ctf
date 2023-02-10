@@ -1,0 +1,22 @@
+challengeName: "where-are-mom-and-pop"
+
+metadata:
+  category: "osint"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/where-are-mom-and-pop"
+  challengeImageVersion: "1.2"
+  externalPort: 80
+  containerPort: 80
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "osint2.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: osint2.jstuart.ca

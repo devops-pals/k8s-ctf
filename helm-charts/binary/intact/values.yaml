@@ -4,7 +4,8 @@ metadata:
   category: "intact"
 
 spec:
-  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/intact:1.0"
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/intact"
+  challengeImageVersion: "1.0"
   externalPort: 2007
   containerPort: 2007
   replicaCount: 1

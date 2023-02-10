@@ -18,9 +18,10 @@ spec:
     spec:
       containers:
         - name: {{ .Values.challengeName }}
-          image: {{ .Values.spec.challengeImage }}
+          image: {{ .Values.spec.challengeImage }}:{{ .Values.spec.challengeImageVersion }}
           ports:
             - containerPort: {{ .Values.spec.containerPort }}
           securityContext:
             privileged: {{ .Values.spec.privileged | default "false" }}
+          imagePullPolicy: {{ .Values.spec.imagepullpolicy | default "Always" }}
 {{- end }}

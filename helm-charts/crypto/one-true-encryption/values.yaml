@@ -1,0 +1,22 @@
+challengeName: "one-true-encryption"
+
+metadata:
+  category: "crypto"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/one-true-encryption"
+  challengeImageVersion: "1.0"
+  externalPort: 31337
+  containerPort: 31337
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "crypto2.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: LoadBalancer
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: crypto2.jstuart.ca
