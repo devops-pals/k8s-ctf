@@ -3,11 +3,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "{{ .Values.category }}-ingress"
+  name: "{{ .Values.ingress.metadata.category }}-ingress"
+  {{- if .Values.ingress.metadata.annotations }}
   annotations:
-  {{- if eq .Values.category "web"}}
-    kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "ingress-{{ .Values.category}}challs"
+    {{- range $key, $value := .Values.ingress.metadata.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
   {{- end }}
 spec:
   rules:

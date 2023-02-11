@@ -1,6 +1,10 @@
-category: "web"
 ingress:
   enabled: true
+  metadata:
+    category: "web"
+    annotations:
+      kubernetes.io/ingress.class: "gce"
+      kubernetes.io/ingress.global-static-ip-name: "ingress-webchalls"
   challenges:
     web1:
       host: "web1.jstuart.ca"
@@ -20,9 +24,3 @@ ingress:
       challengeName: "old-family-recipe"
       externalPort: 80
       containerPort: 5000
-    osint1:
-      host: "osint1.jstuart.ca"
-      pathType: "Prefix"
-      challengeName: "compare-and-contrast"
-      externalPort: 80
-      containerPort: 8000

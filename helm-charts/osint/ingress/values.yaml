@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  metadata:
+    category: "osint"
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      external-dns.alpha.kubernetes.io/hostname: osint1.jstuart.ca,
+  challenges:
+    web1:
+      host: "osint1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "compare-and-contrast"
+      externalPort: 80
+      containerPort: 8000
