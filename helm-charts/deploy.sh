@@ -1,7 +1,7 @@
 #!/bin/bash
 
-namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto")
-resources=("external-dns" "ingress-nginx" "ctfd")
+namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites")
+resources=("external-dns" "ingress-nginx" "ctfd" "story-sites")
 categories=("osint" "web" "binary" "crypto")
 
 
@@ -11,7 +11,8 @@ for name in ${namespaces[@]}; do
 done
 
 # deploy resources
-for name in ${resources[@]}; do 
+for name in ${resources[@]}; do
+    echo "******deploying $name******" 
     ./$name/deploy.sh
 done
 

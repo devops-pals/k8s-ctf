@@ -1,4 +1,4 @@
 #!/bin/bash
 
-helm delete -n binary diversionary-havoc
-helm delete -n binary one-true-encryption
+helm delete -n crypto diversionary-havoc
+helm delete -n crypto one-true-encryption

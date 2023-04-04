@@ -1,0 +1,3 @@
+{{- include "master-chart.service" . }}
+---
+{{- include "master-chart.deployment" . }}
