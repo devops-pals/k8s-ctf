@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  metadata:
+    category: "rev"
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      external-dns.alpha.kubernetes.io/hostname: rev1.jstuart.ca,
+  challenges:
+    web1:
+      host: "rev1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "safe-js"
+      externalPort: 80
+      containerPort: 8000
