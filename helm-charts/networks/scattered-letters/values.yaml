@@ -1,0 +1,20 @@
+challengeName: "scattered-letters"
+
+metadata:
+  category: "networks"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/scattered-letters"
+  challengeImageVersion: "1.0"
+  externalPort: 80
+  containerPort: 8080
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "networks1.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort

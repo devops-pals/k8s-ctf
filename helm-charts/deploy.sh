@@ -1,8 +1,8 @@
 #!/bin/bash
 
-namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites")
+namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites" "rev" "misc" "networks")
 resources=("external-dns" "ingress-nginx" "ctfd" "story-sites")
-categories=("osint" "web" "binary" "crypto")
+categories=("osint" "web" "binary" "crypto" "rev" "forensics" "misc" "networks")
 
 
 # create namespaces
@@ -14,9 +14,12 @@ done
 for name in ${resources[@]}; do
     echo "******deploying $name******" 
     ./$name/deploy.sh
+    echo ""
 done
 
 # deploy challenges
 for name in ${categories[@]}; do
+    echo "******deploying $name******" 
     ./$name/deploy.sh
+    echo ""
 done

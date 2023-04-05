@@ -1,0 +1,6 @@
+dependencies:
+- name: master-chart
+  repository: oci://us-central1-docker.pkg.dev/k8s-ctf-345001/helm-repo
+  version: 0.1.12
+digest: sha256:175706f05faef0ded7cc2281fd70ed748389f01f6830110e0c863c171597f99e
+generated: "2023-02-10T23:51:42.291934777-07:00"

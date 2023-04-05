@@ -1,0 +1,25 @@
+{{- include "master-chart.deployment" . }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.challengeName  }}
+  labels:
+    category: {{ .Values.metadata.category }}
+  {{- if ((.Values.service).annotations) }}
+  annotations:
+    {{- range $key, $value := .Values.service.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+spec:
+  selector:
+    app: {{ .Values.challengeName }}
+  type: {{ .Values.service.type }}
+  ports:
+    - name: ssh
+      port: 22
+      targetPort: 22
+    - name: finger
+      port: 79
+      targetPort: 79

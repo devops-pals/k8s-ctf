@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  metadata:
+    category: "misc"
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      external-dns.alpha.kubernetes.io/hostname: misc1.jstuart.ca,
+  challenges:
+    rev1:
+      host: "misc1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "crack-the-safe"
+      externalPort: 80
+      containerPort: 80

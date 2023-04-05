@@ -6,17 +6,15 @@ metadata:
 spec:
   challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/nitwit-financial-techniques"
   challengeImageVersion: "1.0"
-  externalPort: 80
-  containerPort: 80
+  externalPort: 465
+  containerPort: 465
   replicaCount: 1
 
 ingress:
   enabled: false
-  host: "rev2.jstuart.ca"
+  host: "rev3.jstuart.ca"
   pathType: "Prefix"
 
 service:
   enabled: true
-  type: LoadBalancer
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: rev2.jstuart.ca
+  type: NodePort

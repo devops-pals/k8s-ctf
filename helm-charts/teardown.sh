@@ -1,8 +1,8 @@
 #!/bin/bash
 
-namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites")
+namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites" "rev" "misc")
 resources=("external-dns" "ingress-nginx" "ctfd" "story-sites")
-categories=("osint" "web" "binary" "crypto")
+categories=("osint" "web" "binary" "crypto" "rev" "forensics" "misc")
 
 # run teardown scripts for challenges
 for name in ${categories[@]}; do
@@ -13,6 +13,9 @@ done
 for name in ${resources[@]}; do 
     ./$name/teardown.sh
 done
+
+# sleep to let the services uninstall
+sleep 2m
 
 # delete namespaces
 for name in ${namespaces[@]}; do

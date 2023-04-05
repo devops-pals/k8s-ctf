@@ -1,0 +1,20 @@
+challengeName: "out-of-mind"
+
+metadata:
+  category: "forensics"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/out-of-mind"
+  challengeImageVersion: "1.0"
+  externalPort: 79
+  containerPort: 79
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "forensics1.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: LoadBalancer

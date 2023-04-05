@@ -6,7 +6,7 @@ ingress:
       kubernetes.io/ingress.class: "nginx"
       external-dns.alpha.kubernetes.io/hostname: rev1.jstuart.ca,
   challenges:
-    web1:
+    rev1:
       host: "rev1.jstuart.ca"
       pathType: "Prefix"
       challengeName: "safe-js"

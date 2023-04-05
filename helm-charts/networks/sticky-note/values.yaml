@@ -1,0 +1,20 @@
+challengeName: "sticky-note"
+
+metadata:
+  category: "networks"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/sticky-note"
+  challengeImageVersion: "1.0"
+  externalPort: 22
+  containerPort: 22
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "networks2.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort

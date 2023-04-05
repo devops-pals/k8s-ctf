@@ -1,0 +1,20 @@
+ingress:
+  enabled: true
+  metadata:
+    category: "store-sites"
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      external-dns.alpha.kubernetes.io/hostname: site1.jstuart.ca, site2.jstuart.ca
+  challenges:
+    site1:
+      host: "site1.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "mompop-site"
+      externalPort: 80
+      containerPort: 80
+    site2:
+      host: "site2.jstuart.ca"
+      pathType: "Prefix"
+      challengeName: "omni-site"
+      externalPort: 80
+      containerPort: 80

@@ -1,0 +1,20 @@
+challengeName: "crack-the-safe"
+
+metadata:
+  category: "misc"
+
+spec:
+  challengeImage: "us-central1-docker.pkg.dev/k8s-ctf-345001/docker-repo/crack-the-safe"
+  challengeImageVersion: "1.0"
+  externalPort: 80
+  containerPort: 80
+  replicaCount: 1
+
+ingress:
+  enabled: false
+  host: "misc1.jstuart.ca"
+  pathType: "Prefix"
+
+service:
+  enabled: true
+  type: NodePort
