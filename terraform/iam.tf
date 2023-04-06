@@ -23,3 +23,20 @@ resource "google_project_iam_binding" "external-dns-binding" {
         "serviceAccount:${var.project_name}.svc.id.goog[external-dns/external-dns]",
     ]
 }
+
+# packer service account
+resource "google_service_account" "packer" {
+    account_id = "packer"
+    display_name = "packer service account"
+}
+
+resource "google_project_iam_member" "packer_member" {
+    for_each = toset([
+        "roles/iam.serviceAccountUser", #Service Account User
+        "roles/compute.instanceAdmin.v1" #Compute Instance Admin v1
+    ])
+
+    project = var.project_name
+    role = each.key
+    member = "serviceAccount:${google_service_account.packer.email}"
+}

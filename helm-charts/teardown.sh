@@ -1,8 +1,8 @@
 #!/bin/bash
 
-namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites" "rev" "misc")
+namespaces=("ctfd" "external-dns" "ingress-nginx" "binary" "osint" "web" "crypto" "story-sites" "rev" "misc" "networks")
 resources=("external-dns" "ingress-nginx" "ctfd" "story-sites")
-categories=("osint" "web" "binary" "crypto" "rev" "forensics" "misc")
+categories=("osint" "web" "binary" "crypto" "rev" "forensics" "misc" "networks")
 
 # run teardown scripts for challenges
 for name in ${categories[@]}; do
