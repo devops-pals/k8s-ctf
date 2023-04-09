@@ -41,7 +41,7 @@ resource "google_compute_instance" "turn-key" {
   zone         = each.key
   machine_type = var.machine-type
 
-  tags = ["networks", "turn-key"]
+  tags = ["turn-key"]
 
   boot_disk {
     initialize_params {
@@ -69,14 +69,30 @@ resource "google_compute_network" "turn-key" {
 }
 
 # allow traffic over port 5555 for the turn-key servers
-resource "google_compute_firewall" "turn-key" {
-  name    = "turn-key-firewall"
+resource "google_compute_firewall" "turn-key-egress" {
+  name    = "turn-key-egress"
   network = google_compute_network.turn-key.name
+  direction = "EGRESS"
 
   allow {
     protocol = "tcp"
-    ports    = ["5555"]
+    ports    = ["5555", "22"]
   }
 
   source_tags = ["turn-key"]
+  target_tags = ["turn-key"]
+}
+
+resource "google_compute_firewall" "turn-key-ingress" {
+  name    = "turn-key-ingress"
+  network = google_compute_network.turn-key.name
+  direction = "INGRESS"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["5555", "22"]
+  }
+
+  source_tags = ["turn-key"]
+  target_tags = ["turn-key"]
 }
