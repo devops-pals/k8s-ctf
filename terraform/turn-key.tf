@@ -71,7 +71,7 @@ resource "google_compute_network" "turn-key" {
 # allow traffic over port 5555 for the turn-key servers
 resource "google_compute_firewall" "turn-key" {
   name    = "turn-key-firewall"
-  network = google_compute_network.turn-key
+  network = google_compute_network.turn-key.name
 
   allow {
     protocol = "tcp"
