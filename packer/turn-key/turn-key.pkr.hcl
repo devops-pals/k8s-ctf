@@ -38,6 +38,7 @@ build {
     inline = [
       "sudo apt update -y",
       "sudo apt install default-jre -y",
+      "sudo apt install default-jdk -y",
       "sudo mkdir /home/turn-key/",
       "sudo chown ubuntu:ubuntu /home/turn-key" 
     ]
