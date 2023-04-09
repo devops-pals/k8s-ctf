@@ -50,7 +50,7 @@ resource "google_compute_instance" "turn-key" {
   }
 
   network_interface {
-    network = "turn-key"
+    network =  google_compute_network.turn-key.self_link
     access_config {
 
     }
