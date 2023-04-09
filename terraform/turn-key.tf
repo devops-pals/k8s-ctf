@@ -36,7 +36,6 @@ variable "server-number-location" {
 
 resource "google_compute_instance" "turn-key" {
   for_each     = var.server-number-location
-  count        = 1
   project      = var.project_name
   name         = "server-${each.value}"
   zone         = each.key
