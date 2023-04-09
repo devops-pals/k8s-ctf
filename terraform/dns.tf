@@ -1,6 +1,6 @@
 # DNS Zone
 resource "google_dns_managed_zone" "ctf_dns" {
-  name = "ctf-zone"
+  name     = "ctf-zone"
   dns_name = "jstuart.ca."
 }
 

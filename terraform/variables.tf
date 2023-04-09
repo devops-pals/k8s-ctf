@@ -14,11 +14,11 @@ variable "helm_registry_enabled" {
 }
 
 variable "node_count" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "project_name" {
-  type = string
+  type    = string
   default = "k8s-ctf-345001"
 }

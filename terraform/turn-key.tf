@@ -26,11 +26,11 @@ variable "key-period" {
 
 variable "server-number-location" {
   description = "Key pairs for the server number and the location for it's deployment"
-  type = map
+  type        = map(any)
   default = {
-    us-west2-a = 1,      # LA
+    us-west2-a      = 1, # LA
     europe-north1-a = 2, # Finland
-    asia-south2-a = 3    # Dehli
+    asia-south2-a   = 3  # Dehli
   }
 }
 
@@ -49,12 +49,12 @@ resource "google_compute_instance" "turn-key" {
     }
   }
 
-   network_interface {
+  network_interface {
     network = "turn-key"
     access_config {
-      
+
     }
-   }
+  }
 
   # start process and background it
   metadata_startup_script = "java -jar /home/turn-key/turn-key.jar 5555 ${each.value} ${var.number-of-servers} ${var.key-period} ${var.protocol-time} &"
@@ -62,19 +62,19 @@ resource "google_compute_instance" "turn-key" {
 
 # create a separate network for the turn-key servers
 resource "google_compute_network" "turn-key" {
-    project = var.project_name
-    name = "turn-key"
-    auto_create_subnetworks = true
-    
+  project                 = var.project_name
+  name                    = "turn-key"
+  auto_create_subnetworks = true
+
 }
 
 # allow traffic over port 5555 for the turn-key servers
- resource "google_compute_firewall" "turn-key" {
-     name = "turn-key firewall"
-     network = google_compute_network.turn-key
+resource "google_compute_firewall" "turn-key" {
+  name    = "turn-key-firewall"
+  network = google_compute_network.turn-key
 
-     allow {
-         protocol = "tcp"
-         port = ["5555"]
-     }
- }
+  allow {
+    protocol = "tcp"
+    ports    = ["5555"]
+  }
+}

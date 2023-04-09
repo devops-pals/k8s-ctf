@@ -11,8 +11,8 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 1
 
   dns_config {
-    cluster_dns = "CLOUD_DNS"
-    cluster_dns_scope = "VPC_SCOPE"
+    cluster_dns        = "CLOUD_DNS"
+    cluster_dns_scope  = "VPC_SCOPE"
     cluster_dns_domain = "jstuart.ca"
   }
 
@@ -34,7 +34,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     preemptible  = true
     machine_type = "e2-small"
     oauth_scopes = [
-      "https://www.googleapis.com/auth/devstorage.read_only", 
+      "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
