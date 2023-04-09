@@ -26,10 +26,11 @@ variable "key-period" {
 
 variable "server-number-location" {
   description = "Key pairs for the server number and the location for it's deployment"
+  type = map
   default = {
-    1 = "us-west2-a",      # LA
-    2 = "europe-north1-a", # Finland
-    3 = "asia-south2-a"    # Dehli
+    us-west2-a = 1,      # LA
+    europe-north1-a = 2, # Finland
+    asia-south2-a = 3    # Dehli
   }
 }
 
@@ -37,8 +38,8 @@ resource "google_compute_instance" "turn-key" {
   for_each     = var.server-number-location
   count        = 1
   project      = var.project_name
-  name         = "server-${each.key}"
-  zone         = each.value
+  name         = "server-${each.value}"
+  zone         = each.key
   machine_type = var.machine-type
 
   tags = ["networks", "turn-key"]
@@ -54,5 +55,5 @@ resource "google_compute_instance" "turn-key" {
    }
 
   # start process and background it
-  metadata_startup_script = "java -jar /home/turn-key/turn-key.jar 5555 ${each.key} ${var.number-of-servers} ${var.key-period} ${var.protocol-time} &"
+  metadata_startup_script = "java -jar /home/turn-key/turn-key.jar 5555 ${each.value} ${var.number-of-servers} ${var.key-period} ${var.protocol-time} &"
 }
