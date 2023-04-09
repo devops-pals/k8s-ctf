@@ -77,4 +77,6 @@ resource "google_compute_firewall" "turn-key" {
     protocol = "tcp"
     ports    = ["5555"]
   }
+
+  source_tags = ["turn-key"]
 }
