@@ -79,7 +79,6 @@ resource "google_compute_firewall" "turn-key-egress" {
     ports    = ["5555", "22"]
   }
 
-  source_tags = ["turn-key"]
   target_tags = ["turn-key"]
 }
 
