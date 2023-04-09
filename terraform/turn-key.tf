@@ -28,9 +28,9 @@ variable "server-number-location" {
   description = "Key pairs for the server number and the location for it's deployment"
   type = map
   default = {
-    # us-west2-a = 1,      # LA
-    # europe-north1-a = 2, # Finland
-    # asia-south2-a = 3    # Dehli
+    us-west2-a = 1,      # LA
+    europe-north1-a = 2, # Finland
+    asia-south2-a = 3    # Dehli
   }
 }
 
