@@ -35,7 +35,7 @@ variable "server-number-location" {
 }
 
 resource "google_compute_instance" "turn-key" {
-  for_each     = var.server-number-location # create a server for each location in the variable above
+  for_each     = var.gke_enabled ? var.server-number-location : {} # create a server for each location in the variable above
   project      = var.project_name
   name         = "server-${each.value}"
   zone         = each.key
