@@ -1,5 +1,4 @@
 # VMs to run the turn-key challenge
-
 # LA: us-west2
 # Finalnd: europe-north1
 # Dehli: asia-south2
@@ -50,7 +49,7 @@ resource "google_compute_instance" "turn-key" {
   }
 
   network_interface {
-    network =  google_compute_network.turn-key.self_link
+    network =  google_compute_network.turn-key[0].self_link
     access_config {
 
     }
@@ -62,6 +61,7 @@ resource "google_compute_instance" "turn-key" {
 
 # create a separate network for the turn-key servers
 resource "google_compute_network" "turn-key" {
+  count                   = var.gke_enabled ? 1 : 0
   project                 = var.project_name
   name                    = "turn-key"
   auto_create_subnetworks = true
@@ -70,8 +70,9 @@ resource "google_compute_network" "turn-key" {
 
 # allow traffic over port 5555 for the turn-key servers
 resource "google_compute_firewall" "turn-key-egress" {
+  count                   = var.gke_enabled ? 1 : 0
   name    = "turn-key-egress"
-  network = google_compute_network.turn-key.name
+  network = google_compute_network.turn-key[count.index]
   direction = "EGRESS"
 
   allow {
@@ -83,8 +84,9 @@ resource "google_compute_firewall" "turn-key-egress" {
 }
 
 resource "google_compute_firewall" "turn-key-ingress" {
+  count                   = var.gke_enabled ? 1 : 0
   name    = "turn-key-ingress"
-  network = google_compute_network.turn-key.name
+  network = google_compute_network.turn-key[count.index]
   direction = "INGRESS"
 
   allow {
