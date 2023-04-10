@@ -10,7 +10,7 @@ variable "zone" {
 
 # built on ubuntu 20.04 minimal
 variable "source_image" {
-  default = "debian-11-bullseye-v20230306"
+  default = "ubuntu-2004-focal-v20230302"
 }
 
 # output image name
