@@ -1,8 +1,8 @@
 # DNS Zone
-resource "google_dns_managed_zone" "ctf_dns" {
-  name     = "ctf-zone"
-  dns_name = "jstuart.ca."
-}
+# resource "google_dns_managed_zone" "ctf_dns" {
+#   name     = "ctf-zone"
+#   dns_name = "jstuart.ca."
+# }
 
 ###############################################################################
 #
